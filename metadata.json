@@ -1,0 +1,5 @@
+{
+  "name": "School Violence Response Guide",
+  "description": "A mobile-first, interactive guide for responding to school violence based on Korean Ministry of Education guidelines. Helps students, parents, and teachers find actionable steps without typing.",
+  "requestFramePermissions": []
+}
