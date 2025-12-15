@@ -49,3 +49,9 @@ export const STEPS: WizardStepData[] = [
     ]
   }
 ];
+
+export const TEACHER_POSITION_OPTIONS: StepOption[] = [
+  { id: 'victim', label: '피해 학생 보호/지원', icon: '🛡️', description: '긴급조치, 상담 연계, 분리 요청 등' },
+  { id: 'perpetrator', label: '가해 학생 선도/지도', icon: '📝', description: '확인서 작성, 생활 지도, 특별교육' },
+  { id: 'witness', label: '사안 처리 절차 (행정)', icon: '📂', description: '접수 보고, 전담기구 운영, 심의위 요청' },
+];

@@ -1,5 +1,5 @@
-import React, { useState, useCallback } from 'react';
-import { STEPS } from './constants';
+import React, { useState, useCallback, useMemo } from 'react';
+import { STEPS, TEACHER_POSITION_OPTIONS } from './constants';
 import { UserSelection } from './types';
 import ProgressBar from './components/ProgressBar';
 import SelectionStep from './components/SelectionStep';
@@ -45,16 +45,33 @@ function App() {
 
   const isFinished = currentStepIndex >= STEPS.length;
 
+  const currentStepData = useMemo(() => {
+    if (isFinished) return null;
+    const step = STEPS[currentStepIndex];
+    
+    // If user is a teacher and we are at the 'position' step, swap options
+    if (selection.target === 'teacher' && step.key === 'position') {
+      return {
+        ...step,
+        title: "주로 어떤 업무를 수행하시나요?",
+        subtitle: "지도 대상이나 현재 수행해야 할 핵심 과업을 선택해주세요.",
+        options: TEACHER_POSITION_OPTIONS
+      };
+    }
+    
+    return step;
+  }, [currentStepIndex, selection.target, isFinished]);
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 font-sans selection:bg-blue-100 selection:text-blue-900">
       
-      {!isFinished && (
+      {!isFinished && currentStepData && (
         <>
           <ProgressBar currentStep={currentStepIndex} totalSteps={STEPS.length} />
           
           <main className="pt-2">
             <SelectionStep 
-              stepData={STEPS[currentStepIndex]} 
+              stepData={currentStepData} 
               onSelect={handleSelection} 
             />
           </main>
