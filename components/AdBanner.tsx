@@ -5,6 +5,9 @@ interface AdBannerProps {
 }
 
 const AdBanner: React.FC<AdBannerProps> = ({ location }) => {
+  // 사용자의 요청에 따라 광고 영역을 임시로 주석 처리함 (나중에 필요 시 주석 해제)
+  return null;
+  /*
   return (
     <div 
       className={`
@@ -17,6 +20,7 @@ const AdBanner: React.FC<AdBannerProps> = ({ location }) => {
       <span className="text-xs">Google AdSense</span>
     </div>
   );
+  */
 };
 
 export default AdBanner;
